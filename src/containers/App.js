@@ -3,8 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
 import Counter from '../components/Counter';
-import Timer from '../components/Timer';
-import Clock from '../components/Clock';
 import Footer from '../components/Footer';
 
 /**
@@ -17,11 +15,10 @@ export default class App extends Component {
     // we can use ES6's object destructuring to effectively 'unpack' our props
     const { counter, actions } = this.props;
     return (
-      <div className="mdl-grid">
+      <div className="main-app-container">
+        <div className="main-app-nav">Simple Redux Boilerplate</div>
         {/* notice that we then pass those unpacked props into the Counter component */}
         <Counter counter={counter} actions={actions} />
-        <Timer counter={0} interval={1000} />
-        <Clock interval={1000} />
         <Footer />
       </div>
     );

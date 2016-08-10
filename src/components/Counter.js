@@ -13,24 +13,31 @@ export default class Counter extends Component {
     this.props.actions.decrement();
   }
 
+  handleConditionalIncrement() {
+    this.props.actions.incrementIfOdd();
+  }
+
+  handleAsyncIncrement() {
+    this.props.actions.incrementAsync();
+  }
+
   render() {
     return (
-      <div className="mdl-cell mdl-cell--4-col">
-        <div className="il-card-full il-card-weather mdl-card mdl-shadow--2dp">
-          <div className="mdl-card__title mdl-card--expand">
-            <h2 className="mdl-card__title-text">{this.props.counter}</h2>
-          </div>
-          <div className="mdl-card__supporting-text">
-            {this.props.counter % 2 === 0 ? 'even' : 'odd'}
-          </div>
-          <div className="mdl-card__actions mdl-card--border">
-            <a onClick={() => {this.handleDecrement();}} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              -
-            </a>
-            <a onClick={() => {this.handleIncrement();}} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              +
-            </a>
-          </div>
+      <div className="counter-container">
+        <div className="counter-num-label" style={{color:this.props.counter % 2 === 0 ? 'red' : 'blue'}}>Value is {this.props.counter}</div>
+        <div className="counter-progress">
+          <div style={{width: this.props.counter + "%"}}></div>
+        </div>
+        {/* Below, the even or odd statement is simply used to demonstrate how one could
+        easily use a ternary operator to conditionally show an 'even' or 'odd' string
+        based on the counter's value on state. */}
+        <div className="counter-even-label">{this.props.counter % 2 === 0 ? 'steven' : 'codd'}</div>
+        <br />
+        <div className="counter-buttons">
+          <button onClick={() => {this.handleDecrement();}}>-</button>
+          <button onClick={() => {this.handleIncrement();}}>+</button>
+          <button onClick={() => {this.handleConditionalIncrement();}}>if odd</button>
+          <button onClick={() => {this.handleAsyncIncrement();}}>async</button>
         </div>
       </div>
     );

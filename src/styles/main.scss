@@ -25,11 +25,21 @@ body {
 }
 
 .counter-num-label {
-  color: $accent-orange;
+  color: $accent-blue;
   padding-top: 1em;
   font-size: 3em;
   text-align: center;
   width: 100%;
+}
+
+.counter-progress {
+  border: 1px solid black;
+
+  div {
+    background-color: $accent-orange;
+    height: 24px;
+    transition: width 0.5s;
+  }
 }
 
 .counter-even-label {
