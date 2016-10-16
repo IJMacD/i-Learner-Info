@@ -59,22 +59,14 @@ body {
     }
   }
 }
+.il-card-full {
+    width: 100%;
+    margin-bottom: 16px;
+}
+.mdl-layout__header {
+  background: #21B077;
+}
 
-footer {
-  font-size: 0.75em;
-  text-align: center;
-  padding-top: 10em;
-
-  a {
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      color: $accent-blue;
-    }
-  }
-
-  #heart{
-    color: $accent-red;
-  }
+.mdl-layout-title {
+  color: white;
 }

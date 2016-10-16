@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as CounterActions from '../actions/CounterActions';
+
+import Weather from '../components/Weather';
 import Counter from '../components/Counter';
 import Timer from '../components/Timer';
 import Clock from '../components/Clock';
 import Footer from '../components/Footer';
+import Image from '../components/Image';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -14,59 +14,21 @@ import Footer from '../components/Footer';
  */
 export default class App extends Component {
   render() {
-    // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions } = this.props;
+    
     return (
       <div className="mdl-grid">
-        {/* notice that we then pass those unpacked props into the Counter component */}
-        <Counter counter={counter} actions={actions} />
-        <Timer counter={0} interval={1000} />
-        <Clock interval={1000} />
-        <Footer />
+        <div className="mdl-cell mdl-cell--4-col">
+          <Weather />
+          <Image image="img/rooms.png" />
+        </div>
+        <div className="mdl-cell mdl-cell--4-col">
+          <Clock interval={1000} />
+          <Image image="img/news.png" />
+        </div>
+        <div className="mdl-cell mdl-cell--4-col">
+          <Image image="img/2016halloween.jpg" caption="Halloween 2016" />
+        </div>
       </div>
     );
   }
 }
-
-App.propTypes = {
-  counter: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired
-};
-
-/**
- * Keep in mind that 'state' isn't the state of local object, but your single
- * state in this Redux application. 'counter' is a property within our store/state
- * object. By mapping it to props, we can pass it to the child component Counter.
- */
-function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
-}
-
-/**
- * Turns an object whose values are 'action creators' into an object with the same
- * keys but with every action creator wrapped into a 'dispatch' call that we can invoke
- * directly later on. Here we imported the actions specified in 'CounterActions.js' and
- * used the bindActionCreators function Redux provides us.
- *
- * More info: http://redux.js.org/docs/api/bindActionCreators.html
- */
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(CounterActions, dispatch)
-  };
-}
-
-/**
- * 'connect' is provided to us by the bindings offered by 'react-redux'. It simply
- * connects a React component to a Redux store. It never modifies the component class
- * that is passed into it, it actually returns a new connected componet class for use.
- *
- * More info: https://github.com/rackt/react-redux
- */
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

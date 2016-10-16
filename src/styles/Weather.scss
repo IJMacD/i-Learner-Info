@@ -1,0 +1,21 @@
+
+.il-card-weather {
+    height: 320px;
+}
+.il-card-weather {
+    background: url('../../static/img/sun.png') bottom right 15% no-repeat #46B6AC;
+}
+.il-card-weather .mdl-card__title-text {
+    color: #fff;
+    font-size: 64px;
+}
+.il-card-weather .mdl-card__actions {
+    background: rgba(0,0,0,0.2);
+    height: 56px;
+    padding: 16px;
+}
+.il-card-weather__status {
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
